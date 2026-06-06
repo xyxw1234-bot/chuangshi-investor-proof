@@ -90,7 +90,7 @@
   </main>
   <div class="stickyActions"><a href="#top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false" aria-label="回到顶部">↑</a><button onclick="copyLink()" aria-label="复制链接">链</button></div><div class="toast" id="toast">已复制当前页面链接</div>
   <script>
-    function copyLink(){navigator.clipboard?.writeText(location.href);const t=document.getElementById('toast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1600)}
+    function copyLink(){try{navigator.clipboard?.writeText(location.href)?.catch(()=>{})}catch(e){}const t=document.getElementById('toast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1600)}
     document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',()=>{try{history.replaceState(null,'',a.getAttribute('href'))}catch(e){}}));
   </script>
 </body>
